@@ -1,0 +1,19 @@
+.container{
+      height:auto;
+      width:100vw;
+      padding:30px;
+      margin-top: 50px;
+}
+.name{
+      height:50px;
+      width:100%;
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+      font-weight: 600;
+}
+.content{
+      height:auto;
+      width:100%;
+      margin-top: 50px;
+}

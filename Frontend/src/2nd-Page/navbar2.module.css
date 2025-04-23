@@ -1,0 +1,145 @@
+/* General navbar layout */
+.navbar {
+      height: 70px;
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      background-color: white;
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* Left logo and brand name */
+    .left-side {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo {
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+    }
+    
+    .logo img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+    
+    .name {
+      font-size: 26px;
+      font-weight: bolder;
+      color: rgb(6, 179, 6);
+      text-decoration: none;
+    }
+    
+    .name:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    /* Right side nav items */
+    .right-side {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    /* Navigation links */
+    .nav-items {
+      font-size: 18px;
+      color: rgb(41, 41, 41);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      padding: 0 15px;
+    }
+    
+    .nav-items:hover {
+      color: rgb(37, 167, 37);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    /* Log out button styling */
+    .Log-out {
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: rgb(239, 60, 60);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+    
+    .Log-out:hover {
+      background-color: rgb(4, 139, 4);
+      transform: scale(1.05);
+    }
+    
+    /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: black;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+    
+    /* Responsive styles for mobile */
+    @media (max-width: 768px) {
+      .right-side {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+    
+      .right-side.active {
+        display: flex;
+      }
+    
+      .hamburger {
+        display: flex;
+      }
+    
+      .nav-items {
+        width: 100%;
+        text-align: center;
+        margin: 15px 0;
+      }
+    
+      .Log-out {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+      }
+    }
+    
+    /* Active nav link (if you add route logic later) */
+    .active {
+      color: rgb(37, 167, 37);
+    }
+.active{
+      color: rgb(37, 167, 37);  
+
+      }

@@ -1,0 +1,143 @@
+.footer {
+      width: 100%;
+      background-color: #f6f4f4;
+      margin-top: 80px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .section {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .description {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .sectionTitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .linkList {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .linkList li {
+      margin-bottom: 12px;
+    }
+    
+    .link {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .link:hover {
+      color: #4CAF50;
+    }
+    
+    .contactLink {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contactLink:hover {
+      color: #4CAF50;
+    }
+    
+    .socialLinks {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .socialIcon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .socialIcon:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .bottom {
+      border-top: 1px solid #ddd;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .copyright {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .legalLinks {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .legalLink {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    
+    .legalLink:hover {
+      color: #4CAF50;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .socialLinks {
+        justify-content: center;
+      }
+      
+      .bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .legalLinks {
+        justify-content: center;
+      }
+    }

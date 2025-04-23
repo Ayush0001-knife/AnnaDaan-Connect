@@ -1,0 +1,57 @@
+/* donationboxlist.module.css */
+.donationboxes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px; /* Space between donation boxes */
+  justify-content: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.donationboxes-container p {
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: -50px;
+  margin-left: 100px;
+  text-decoration: underline;
+}
+
+.donation-box {
+  flex: 1;
+  min-width: 280px;
+  max-width: 320px;
+  height: auto; /* Ensures that the height adjusts based on content */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.donation-box:hover {
+  transform: scale(1.05);
+}
+
+/* Ensuring responsive design */
+@media (max-width: 768px) {
+  .donationboxes-container {
+    gap: 15px;
+  }
+
+  .donation-box {
+    min-width: 250px;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .donationboxes-container {
+    gap: 10px;
+  }
+
+  .donation-box {
+    min-width: 220px;
+    max-width: 260px;
+  }
+}
