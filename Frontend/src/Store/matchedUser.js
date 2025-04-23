@@ -28,9 +28,11 @@ const MatchedUserSlice = createSlice({
       };
       state.userActivities = [];
     },
+    setUserActivities: (state, action) => {
+      state.userActivities = action.payload;
+    },
   },
 });
 
 export const MatchedUserActions = MatchedUserSlice.actions;
-
 export default MatchedUserSlice;

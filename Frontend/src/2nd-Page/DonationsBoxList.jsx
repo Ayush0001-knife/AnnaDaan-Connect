@@ -8,15 +8,25 @@ function DonationBoxList() {
 
   return (
     <div className={styles["donationboxes-container"]}>
-      <p className={styles["heading"]}>
-        {matchedUser.userInfo.userType === "donor"
-          ? "Your Donations"
-          : "Available Donations"}
-      </p>
-      <YourDonationsBox />
-      <YourDonationsBox />
-      <YourDonationsBox />
-      {/* Add more YourDonationsBox components as needed */}
+      {matchedUser.userInfo.userType === "donor" ? (
+        <>
+          <p className={styles["heading"]}>
+            {matchedUser.userActivities.length === 0
+              ? "No Donations Yet"
+              : "Your Donations"}
+          </p>
+          {matchedUser.userActivities.map((activity) => (
+            <YourDonationsBox activity={activity} />
+          ))}
+        </>
+      ) : (
+        <>
+          <p className={styles["heading"]}>Available Donations</p>
+          <YourDonationsBox />
+          <YourDonationsBox />
+          <YourDonationsBox />
+        </>
+      )}
     </div>
   );
 }

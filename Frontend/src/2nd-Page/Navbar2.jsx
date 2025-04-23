@@ -17,8 +17,6 @@ function Navbar2() {
   const currentPage = useSelector((store) => store.currentPage.currentPage);
   const matchedUser = useSelector((store) => store.matchedUser);
 
-  console.log("Matched user in Navbar", matchedUser);
-
   const handleCurrentPageChange = (page) => {
     dispatch(CurrentPageActions.setCurrentPage(page));
   };

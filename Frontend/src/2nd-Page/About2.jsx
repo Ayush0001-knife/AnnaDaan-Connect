@@ -19,6 +19,10 @@ const About2 = () => {
     alert("Work In progress");
   };
 
+  const testing = () => {
+    console.log(matchedUser.userActivities);
+  };
+
   return (
     <>
       <div className={styles["about-container"]}>
@@ -32,7 +36,7 @@ const About2 = () => {
             to AnnaDaan Connect
           </p>
         </div>
-        <div className={styles["mission"]}>
+        <div className={styles["mission"]} onClick={testing}>
           <p>
             Join our mission to reduce food waste by connecting surplus food to
             those in need. Post available food donations or claim available ones
