@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 function DonationBoxList() {
   const matchedUser = useSelector((store) => store.matchedUser);
 
+  const testing = () => {
+    console.log("matchedUser", matchedUser);
+  };
+
   return (
     <div className={styles["donationboxes-container"]}>
       {matchedUser.userInfo.userType === "donor" ? (
@@ -15,16 +19,20 @@ function DonationBoxList() {
               ? "No Donations Yet"
               : "Your Donations"}
           </p>
-          {matchedUser.userActivities.map((activity) => (
-            <YourDonationsBox activity={activity} />
+          {matchedUser.userActivities.map((activity, index) => (
+            <YourDonationsBox key={index} activity={activity} />
           ))}
         </>
       ) : (
         <>
-          <p className={styles["heading"]}>Available Donations</p>
-          <YourDonationsBox />
-          <YourDonationsBox />
-          <YourDonationsBox />
+          <p className={styles["heading"]} onClick={testing}>
+            {matchedUser.userActivities.length === 0
+              ? "No Donations Yet from Donors"
+              : "Available Donations"}
+          </p>
+          {matchedUser.userActivities.map((activity, index) => (
+            <YourDonationsBox key={index} activity={activity} />
+          ))}
         </>
       )}
     </div>

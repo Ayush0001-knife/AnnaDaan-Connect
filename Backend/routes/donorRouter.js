@@ -7,7 +7,7 @@ userRouter.get("/credentials", donorController.getDonorData);
 userRouter.post("/donations", donorController.postDonations);
 userRouter.get("/donations-data" , donorController.getDonations )
 userRouter.delete("/remove-donations/:id", donorController.deleteDonations);
-
+userRouter.put("/update-donations", donorController.updateDonations);
 
 
 module.exports = userRouter;

@@ -13,44 +13,46 @@ const SecondPage = () => {
   const matchedUser = useSelector((store) => store.matchedUser);
   const dispatch = useDispatch();
 
-  const handleMatchedUserActivities = () => {
+  const handleMatchedUserActivities = async () => {
     if (!matchedUser.userInfo) {
       console.error("User info not available");
       return;
     }
 
-    if (matchedUser.userInfo.userType === "donor") {
-      fetch("http://localhost:3001/donor/donations-data", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to fetch donations data");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          if (!data.donations) {
-            throw new Error("No donations data received");
-          }
+    try {
+      const response = await fetch(
+        "http://localhost:3001/donor/donations-data",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-          const filteredDonations = data.donations.filter(
-            (donation) => donation.contact === matchedUser.userInfo.contact
-          );
+      if (!response.ok) {
+        throw new Error("Failed to fetch donations data");
+      }
 
-          console.log(
-            "Filtered donations for matched user:",
-            filteredDonations
-          );
-          dispatch(MatchedUserActions.setUserActivities(filteredDonations));
-        })
-        .catch((error) => {
-          console.error("Error fetching donations:", error);
-          dispatch(MatchedUserActions.setUserActivities([]));
-        });
+      const data = await response.json();
+
+      if (!data.donations) {
+        throw new Error("No donations data received");
+      }
+
+      let filteredDonations = data.donations;
+
+      if (matchedUser.userInfo.userType === "donor") {
+        filteredDonations = data.donations.filter(
+          (donation) => donation.contact === matchedUser.userInfo.contact
+        );
+        console.log("Filtered donations for matched user:", filteredDonations);
+      }
+
+      dispatch(MatchedUserActions.setUserActivities(filteredDonations));
+    } catch (error) {
+      console.error("Error fetching donations:", error);
+      dispatch(MatchedUserActions.setUserActivities([]));
     }
   };
 

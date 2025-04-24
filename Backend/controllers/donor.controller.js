@@ -82,4 +82,40 @@ exports.deleteDonations = async (req, res) => {
 };
 
 
+exports.updateDonations = async (req, res) => {
+  const { type, quantity, expiration, contact } = req.body;
+
+  try {
+    // Find and update donation based on contact number
+    const updatedDonation = await DonationsModel.findOneAndUpdate(
+      { contact }, // search criteria
+      {
+        type,
+        quantity,
+        expiration
+      },
+      { 
+        new: true, // return the updated document
+        runValidators: true // run model validations
+      }
+    );
+
+    if (!updatedDonation) {
+      return res.status(404).json({ message: "No donation found for this contact number" });
+    }
+
+    res.status(200).json({ 
+      message: "Donation updated successfully", 
+      donation: updatedDonation 
+    });
+  } catch (error) {
+    console.error("Error updating donation:", error);
+    res.status(500).json({ 
+      message: "Server error while updating donation",
+      error: error.message 
+    });
+  }
+};
+
+
     

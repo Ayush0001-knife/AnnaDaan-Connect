@@ -45,6 +45,8 @@ function PostFoodPage() {
     expirationElement.current.value = "";
 
     dispatch(CurrentPageActions.setCurrentPage("dashboard"));
+
+    window.location.reload();
   };
 
   return (
