@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import styles from "../authentication-components.css.mdules/login-page.module.css";
 import { useDispatch } from "react-redux";
 import { AuthenticationMethodActions } from "../../Store/AuthenticationMethod";
-import Notification from "../../1st-Page/PopUpNotification"; // Import the notification component
+import Notification from "../../1st-Page/PopUpNotification";
 import { MatchedUserActions } from "../../Store/matchedUser";
 import { isRegisteredActions } from "../../Store/isRegistered";
 import { useNavigate } from "react-router-dom";

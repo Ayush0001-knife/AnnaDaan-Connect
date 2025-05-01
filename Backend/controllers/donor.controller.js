@@ -20,14 +20,14 @@ exports.postDonorData = async (req, res) => {
 
 exports.getDonorData = async (req, res) => {
   try {
-    const donors = await DonorsModel.find(); // Get the data from the Donors collection
+    const donors = await DonorsModel.find(); 
     res.status(200).json({
-      users: donors // Send the fetched data under 'users' key
+      users: donors 
     });
   } catch (error) {
     res.status(500).json({
-      message: "Failed to fetch donors", // Send an error message if there's an issue fetching the data
-      error: error.message, // Send the actual error message for debugging
+      message: "Failed to fetch donors", 
+      error: error.message, 
     });
   }
 };
@@ -46,14 +46,14 @@ exports.postDonations = (req,res)=>{
 
 exports.getDonations = async (req, res) => {
   try {
-    const donations = await DonationsModel.find(); // Fetch all donations
+    const donations = await DonationsModel.find(); 
     res.status(200).json({
-      donations: donations // Return the data under the key 'donations'
+      donations: donations 
     });
   } catch (error) {
     res.status(500).json({
-      message: "Failed to fetch donations", // Message for the client
-      error: error.message // Actual error for debugging
+      message: "Failed to fetch donations", 
+      error: error.message 
     });
   }
 };

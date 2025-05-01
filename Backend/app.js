@@ -19,7 +19,7 @@ app.use("/ngo",ngoRouter)
 
 mongoose
   .connect(
-    "mongodb+srv://root:ayushgautam2006@ayushcluster.zcvrjv8.mongodb.net/AnnaDaanConnect?retryWrites=true&w=majority&appName=AyushCluster"
+    "mongodb+srv://AyushGautam:ayushgautam2006@ayushgautamcluster.hxz64on.mongodb.net/AnnaDaanConnect?retryWrites=true&w=majority&appName=AyushGautamCluster"
   )
   .then(() => {
     console.log("Connected to MongoDB");
