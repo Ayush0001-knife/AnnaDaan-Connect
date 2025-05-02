@@ -52,7 +52,11 @@ const About2 = () => {
           <button
             type="button"
             className={styles["btn1"]}
-            onClick={() => handlePostFood("post-food")}
+            onClick={
+              matchedUser.userInfo.userType === "donor"
+                ? () => handlePostFood("post-food")
+                : () => handlePostFood("available-donations")
+            }
           >
             {matchedUser.userInfo.userType === "donor"
               ? "Post Surplus Food"

@@ -46,6 +46,7 @@ function Navbar2() {
           (donation) => donation.city === matchedUser.userInfo.city
         );
         console.log("Filtered data", filteredData);
+        setSameCityDonations(filteredData);
         dispatch(NotificationsActions.setNotifications(filteredData));
       })
       .catch((error) => {
@@ -110,17 +111,22 @@ function Navbar2() {
           </Link>
         )}
 
-        <Link
-          className={`${styles["nav-items"]} ${
-            currentPage === "notifications" ? styles.active : ""
-          }`}
-          onClick={() => {
-            handleCurrentPageChange("notifications");
-            handleNotificationsClick();
-          }}
-        >
-          Notifications
-        </Link>
+        <button type="button" class="btn  position-relative">
+          <Link
+            className={`${styles["nav-items"]} ${
+              currentPage === "notifications" ? styles.active : ""
+            }`}
+            onClick={() => {
+              handleCurrentPageChange("notifications");
+              handleNotificationsClick();
+            }}
+          >
+            Notifications
+          </Link>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {sameCityDonations.length}
+          </span>
+        </button>
 
         {matchedUser.userInfo.userType === "donor" && (
           <Link

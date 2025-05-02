@@ -98,137 +98,150 @@ function YourDonationsBox({ activity }) {
     return <div className={styles.box}>No donation data available.</div>;
   }
 
+  const handleClaimClick = () => {
+    const confirmed = window.confirm("Do you want to confirm this claim?");
+    if (confirmed) {
+      alert("Your claim has been confirmed");
+    }
+  };
+
   return (
-    <div className={styles.box}>
-      {!isEditing ? (
-        <>
-          <div className={styles.name}>
-            <div className="details">
-              <MdOutlineAccountCircle />
-              <div className={styles["person-name"]}>{activity.name}</div>
+    <>
+      <div className={styles.box}>
+        {!isEditing ? (
+          <>
+            <div className={styles.name}>
+              <div className="details">
+                <MdOutlineAccountCircle />
+                <div className={styles["person-name"]}>{activity.name}</div>
+              </div>
+              <div className="location">
+                <GrLocationPin />
+                <div className={styles["person-name"]}>{activity.city}</div>
+              </div>
             </div>
-            <div className="location">
-              <GrLocationPin />
-              <div className={styles["person-name"]}>{activity.city}</div>
-            </div>
-          </div>
 
-          <div className={styles.props}>
-            <div className={styles.type}>{activity.type}</div>
-            <div className={styles.details}>
-              <div className={styles.qty}>
-                <FaWeightHanging className={styles["qty-icon"]} />
-                <div className={styles["qty-name"]}>
-                  Quantity : {activity.quantity} kg
+            <div className={styles.props}>
+              <div className={styles.type}>{activity.type}</div>
+              <div className={styles.details}>
+                <div className={styles.qty}>
+                  <FaWeightHanging className={styles["qty-icon"]} />
+                  <div className={styles["qty-name"]}>
+                    Quantity : {activity.quantity} kg
+                  </div>
                 </div>
-              </div>
-              <div className={styles.expiry}>
-                <CgSandClock className={styles["expiry-icon"]} />
-                <div className={styles["expiry-name"]}>
-                  Expires in : {getExpirationStatus()}
+                <div className={styles.expiry}>
+                  <CgSandClock className={styles["expiry-icon"]} />
+                  <div className={styles["expiry-name"]}>
+                    Expires in : {getExpirationStatus()}
+                  </div>
                 </div>
-              </div>
-              <div className={styles.status}>
-                <GrCircleInformation className={styles["status-icon"]} />
-                <div className={styles["status-name"]}>
-                  Status : {activity.status}
+                <div className={styles.status}>
+                  <GrCircleInformation className={styles["status-icon"]} />
+                  <div className={styles["status-name"]}>
+                    Status : {activity.status}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className={styles.btns}>
-            {matchedUser.userInfo.userType === "donor" && (
-              <>
-                <button
-                  type="button"
-                  className={styles["view-details"]}
-                  onClick={() => setIsEditing(true)}
-                >
-                  Update Details
-                </button>
+            <div className={styles.btns}>
+              {matchedUser.userInfo.userType === "donor" && (
+                <>
+                  <button
+                    type="button"
+                    className={styles["view-details"]}
+                    onClick={() => setIsEditing(true)}
+                  >
+                    Update Details
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.claim}
+                    onClick={handleRemoveFoodPost}
+                  >
+                    Remove
+                  </button>
+                </>
+              )}
+              {matchedUser.userInfo.userType !== "donor" && (
                 <button
                   type="button"
                   className={styles.claim}
-                  onClick={handleRemoveFoodPost}
+                  onClick={handleClaimClick}
                 >
-                  Remove
+                  Claim Donation
                 </button>
-              </>
-            )}
-            {matchedUser.userInfo.userType !== "donor" && (
-              <button type="button" className={styles.claim}>
-                Claim Donation
-              </button>
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          <form className={styles.updateForm} onSubmit={handleFormSubmit}>
-            <h3>Update Donation Details</h3>
-            <div className={styles.formGroup}>
-              <label>Food Type:</label>
-              <select
-                value={formData.type}
-                onChange={(e) =>
-                  setFormData({ ...formData, type: e.target.value })
-                }
-              >
-                <option value="">Select food type</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="non-vegetarian">Non-Vegetarian</option>
-                <option value="desserts">Desserts</option>
-                <option value="beverages">Beverages</option>
-                <option value="mixed">Mixed</option>
-              </select>
+              )}
             </div>
-            <div className={styles.formGroup}>
-              <label>Quantity (kg):</label>
-              <input
-                type="number"
-                value={formData.quantity}
-                onChange={(e) =>
-                  setFormData({ ...formData, quantity: e.target.value })
-                }
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Expiration (hours):</label>
-              <input
-                type="number"
-                value={formData.expiration}
-                onChange={(e) =>
-                  setFormData({ ...formData, expiration: e.target.value })
-                }
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label>City:</label>
-              <select
-                value={formData.city}
-                onChange={(e) =>
-                  setFormData({ ...formData, city: e.target.value })
-                }
-              >
-                <option value="">Select city</option>
-                <option value="Noida">Noida</option>
-                <option value="Gr Noida">Gr Noida</option>
-                <option value="Ghaziabad">Ghaziabad</option>
-                <option value="Gurgaon">Gurgaon</option>
-                <option value="Okhla">Okhla</option>
-              </select>
-            </div>
-            <div className={styles.formButtons}>
-              <button type="submit">Save</button>
-              <button type="button" onClick={() => setIsEditing(false)}>
-                Cancel
-              </button>
-            </div>
-          </form>
-        </>
-      )}
-    </div>
+          </>
+        ) : (
+          <>
+            <form className={styles.updateForm} onSubmit={handleFormSubmit}>
+              <h3>Update Donation Details</h3>
+              <div className={styles.formGroup}>
+                <label>Food Type:</label>
+                <select
+                  value={formData.type}
+                  onChange={(e) =>
+                    setFormData({ ...formData, type: e.target.value })
+                  }
+                >
+                  <option value="">Select food type</option>
+                  <option value="vegetarian">Vegetarian</option>
+                  <option value="non-vegetarian">Non-Vegetarian</option>
+                  <option value="desserts">Desserts</option>
+                  <option value="beverages">Beverages</option>
+                  <option value="mixed">Mixed</option>
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label>Quantity (kg):</label>
+                <input
+                  type="number"
+                  value={formData.quantity}
+                  onChange={(e) =>
+                    setFormData({ ...formData, quantity: e.target.value })
+                  }
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Expiration (hours):</label>
+                <input
+                  type="number"
+                  value={formData.expiration}
+                  onChange={(e) =>
+                    setFormData({ ...formData, expiration: e.target.value })
+                  }
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label>City:</label>
+                <select
+                  value={formData.city}
+                  onChange={(e) =>
+                    setFormData({ ...formData, city: e.target.value })
+                  }
+                >
+                  <option value="">Select city</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Gr Noida">Gr Noida</option>
+                  <option value="Ghaziabad">Ghaziabad</option>
+                  <option value="Gurgaon">Gurgaon</option>
+                  <option value="Okhla">Okhla</option>
+                </select>
+              </div>
+              <div className={styles.formButtons}>
+                <button type="submit">Save</button>
+                <button type="button" onClick={() => setIsEditing(false)}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
