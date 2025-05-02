@@ -11,12 +11,13 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
   const [EmailOrNumber, setEmailOrNumber] = useState("Email");
   const [userType, setUserType] = useState("");
-  const [notification, setNotification] = useState(null); // State to manage notifications
+  const [notification, setNotification] = useState(null);
   const Navigate = useNavigate();
 
   const nameElement = useRef(null);
   const contactElement = useRef(null);
   const passwordElement = useRef(null);
+  const cityElement = useRef(null);
 
   const handleChange = () => setEmailOrNumber(!EmailOrNumber);
 
@@ -35,11 +36,16 @@ const RegisterPage = () => {
     const contact = contactElement.current.value;
     const password = passwordElement.current.value;
 
+    let city;
+    if (userType === "ngo") {
+      city = cityElement.current.value;
+    }
     const userEnteredData = {
       name: name,
       contact: contact,
       password: password,
       userType: userType, // Add userType in the data
+      ...(userType === "ngo" && { city: city }),
     };
 
     console.log("Your Entered Data", userEnteredData);
@@ -147,6 +153,25 @@ const RegisterPage = () => {
               NGO
             </label>
           </div>
+          {userType === "ngo" && (
+            <div className={styles.inputGroup}>
+              <label htmlFor="city">City</label>
+              <select
+                id="city"
+                name="city"
+                className={styles.select}
+                ref={cityElement}
+              >
+                <option value="">Select City</option>
+                <option value="Noida">Noida</option>
+                <option value="Gr Noida">Gr Noida</option>
+                <option value="Ghaziabad">Ghaziabad</option>
+                <option value="Gurgaon">Gurgaon</option>
+                <option value="Okhla">Okhla</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+            </div>
+          )}
         </div>
         <p
           className={styles.option}

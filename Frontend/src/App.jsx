@@ -10,11 +10,10 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Reset matchedUser and isRegistered state when at the root path
   useEffect(() => {
     if (location.pathname === "/") {
       dispatch(MatchedUserActions.resetUserInfo());
-      dispatch(isRegisteredActions.resetIsRegistered()); // Reset registration status
+      dispatch(isRegisteredActions.resetIsRegistered());
     }
   }, [location.pathname, dispatch]);
 

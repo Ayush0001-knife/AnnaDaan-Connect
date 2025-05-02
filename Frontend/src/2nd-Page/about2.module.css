@@ -1,212 +1,227 @@
 .about-container {
-      width: 100%;
-      margin-top: 70px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
- .user{
+  width: 100%;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.welcome {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  white-space: normal; /* Allow flexible text */
+}
+
+.user {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   color: rgb(15, 184, 15);
   text-decoration: underline;
- }   
-    .welcome {
-      width: 100%;
-      max-width: 1000px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bolder;
-      margin-bottom: 10px;
-      line-height: 1.4;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    @media (max-width: 768px) {
-      .welcome {
-        font-size: 2rem;
-        white-space: normal;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .welcome {
-        font-size: 1.6rem;
-      }
-    }
-    
-    .mission {
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
-      font-size: 1rem;
-      color: rgb(112, 111, 111);
-      line-height: 1.6;
-      margin-bottom: 20px;
-      padding: 0 10px;
-      margin-top: 30px;
-    }
-    
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 500px;
-      margin-top: 20px;
-    }
-    
-    .btn1,
-    .btn2 {
-      flex: 1;
-      min-width: 150px;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .btn1 {
-      background-color: rgb(40, 149, 40);
-      color: white;
-    }
-    
-    .btn1:hover {
-      background-color: rgb(30, 120, 30);
-      transform: scale(1.05);
-    }
-    
-    .btn2 {
-      background-color: white;
-      color: rgb(40, 149, 40);
-      border: 2px solid rgb(40, 149, 40);
-    }
-    
-    .btn2:hover {
-      background-color: rgb(227, 95, 12);
-      color: white;
-      transform: scale(1.05);
-    }
-    
-    .stats {
-      width: 100%;
-      margin-top: 50px;
-      display: flex;
-      justify-content: space-around;
-      align-items: stretch;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-    
-    .stats-box {
-      flex: 1;
-      flex-direction: column;
-      min-width: 280px;
-      max-width: 350px;
-      padding: 30px 20px;
-      text-align: center;
-      background-color: rgb(255, 255, 255);
-      box-shadow: 10px 10px 10px rgb(248, 247, 247);
-      border-radius: 10px;
-      margin-bottom: 30px; /* Adjusted margin for better spacing */
-    }
-    
-    .stats-box p {
-      margin-top: 12px;
-      color: rgb(112, 111, 111);
-    }
-    
-    .stats-box .stat-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    
-    .stats-box .stat-value {
-      font-size: 2.5rem;
-      color: rgb(40, 149, 40);
-      margin-bottom: 15px;
-    }
-    
-    .stats-box .stat-description {
-      font-size: 1rem;
-      color: rgb(153, 153, 153);
-    }
-    
-    .icon-green,
-    .icon-orange {
-      font-size: 2.5rem;
-      display: block;
-      margin: 0 auto 15px auto;
-    }
-    
-    .icon-green {
-      color: rgb(40, 149, 40);
-    }
-    
-    .icon-orange {
-      color: rgba(227, 95, 12, 0.904);
-    }
-    
-    .icon-green:hover,
-    .icon-orange:hover {
-      transform: scale(1.1);
-      transition: all 0.3s ease;
-    }
-    
-    @media (max-width: 768px) {
-      .mission {
-        font-size: 1rem;
-      }
-    
-      .btn1,
-      .btn2 {
-        font-size: 0.95rem;
-      }
-    
-      .stats-box .stat-title {
-        font-size: 1rem;
-      }
-    
-      .stats-box .stat-value {
-        font-size: 2rem;
-      }
-    
-      .stats-box .stat-description {
-        font-size: 0.95rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-    
-      .btn1,
-      .btn2 {
-        width: 100%;
-      }
-    
-      .stats {
-        flex-direction: column;
-        align-items: center;
-      }
-    
-      .stats-box {
-        width: 100%;
-        max-width: 90%;
-      }
-    }
-    
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .welcome {
+    font-size: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on medium screens */
+  }
+
+  .user {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome {
+    font-size: 1.6rem;
+    flex-direction: column;
+  }
+
+  .user {
+    font-size: 1.2rem;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+.mission {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  font-size: 1rem;
+  color: rgb(112, 111, 111);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 0 10px;
+  margin-top: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.btn1,
+.btn2 {
+  flex: 1;
+  min-width: 150px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn1 {
+  background-color: rgb(40, 149, 40);
+  color: white;
+}
+
+.btn1:hover {
+  background-color: rgb(30, 120, 30);
+  transform: scale(1.05);
+}
+
+.btn2 {
+  background-color: white;
+  color: rgb(40, 149, 40);
+  border: 2px solid rgb(40, 149, 40);
+}
+
+.btn2:hover {
+  background-color: rgb(227, 95, 12);
+  color: white;
+  transform: scale(1.05);
+}
+
+.stats {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.stats-box {
+  flex: 1;
+  flex-direction: column;
+  min-width: 280px;
+  max-width: 350px;
+  padding: 30px 20px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 10px 10px 10px rgb(248, 247, 247);
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.stats-box p {
+  margin-top: 12px;
+  color: rgb(112, 111, 111);
+}
+
+.stats-box .stat-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stats-box .stat-value {
+  font-size: 2.5rem;
+  color: rgb(40, 149, 40);
+  margin-bottom: 15px;
+}
+
+.stats-box .stat-description {
+  font-size: 1rem;
+  color: rgb(153, 153, 153);
+}
+
+.icon-green,
+.icon-orange {
+  font-size: 2.5rem;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+.icon-green {
+  color: rgb(40, 149, 40);
+}
+
+.icon-orange {
+  color: rgba(227, 95, 12, 0.904);
+}
+
+.icon-green:hover,
+.icon-orange:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .mission {
+    font-size: 1rem;
+  }
+
+  .btn1,
+  .btn2 {
+    font-size: 0.95rem;
+  }
+
+  .stats-box .stat-title {
+    font-size: 1rem;
+  }
+
+  .stats-box .stat-value {
+    font-size: 2rem;
+  }
+
+  .stats-box .stat-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn1,
+  .btn2 {
+    width: 100%;
+  }
+
+  .stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats-box {
+    width: 100%;
+    max-width: 90%;
+  }
+}

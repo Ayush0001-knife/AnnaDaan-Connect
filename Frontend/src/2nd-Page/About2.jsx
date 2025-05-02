@@ -6,6 +6,7 @@ import { FaHandsPraying } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { CurrentPageActions } from "../Store/CurrentPage";
 import { useDispatch } from "react-redux";
+import { FaLocationDot } from "react-icons/fa6";
 
 const About2 = () => {
   const matchedUser = useSelector((store) => store.matchedUser);
@@ -26,14 +27,18 @@ const About2 = () => {
   return (
     <>
       <div className={styles["about-container"]}>
-        <div
-          className={styles["welcome"]}
-          onClick={() => console.log(matchedUser)}
-        >
+        <div className={styles["welcome"]}>
           <p>
             Welcome{" "}
-            <span className={styles["user"]}>{matchedUser.userInfo.name}</span>{" "}
-            to AnnaDaan Connect
+            <span className={`${styles.user} flex items-center gap-1`}>
+              {matchedUser.userInfo.name}
+              {matchedUser.userInfo.city && (
+                <>
+                  <FaLocationDot className="text-orange-500" />
+                  <span>{matchedUser.userInfo.city}</span>
+                </>
+              )}
+            </span>
           </p>
         </div>
         <div className={styles["mission"]} onClick={testing}>

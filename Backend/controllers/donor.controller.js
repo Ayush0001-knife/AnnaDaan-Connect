@@ -33,10 +33,10 @@ exports.getDonorData = async (req, res) => {
 };
 
 exports.postDonations = (req,res)=>{
-  const {contact,name,type,quantity,expiration,postTiming} = req.body;
+  const {contact,name,type,quantity,expiration,postTiming,city} = req.body;
 
-  console.log("Data in backend: ", contact, name, type, quantity, expiration,postTiming);
-  const donationsInfo = new DonationsModel({contact,name,type,quantity,expiration,postTiming});
+  console.log("Data in backend: ", contact, name, type, quantity, expiration,postTiming,city);
+  const donationsInfo = new DonationsModel({contact,name,type,quantity,expiration,postTiming,city});
   donationsInfo.save().then(()=>{
     console.log("Data saved successfully in Donations Collection")
   }).catch((error)=>{
@@ -83,7 +83,7 @@ exports.deleteDonations = async (req, res) => {
 
 
 exports.updateDonations = async (req, res) => {
-  const { type, quantity, expiration, contact } = req.body;
+  const { type, quantity, expiration, contact ,city} = req.body;
 
   try {
     // Find and update donation based on contact number
@@ -92,7 +92,8 @@ exports.updateDonations = async (req, res) => {
       {
         type,
         quantity,
-        expiration
+        expiration,
+        city
       },
       { 
         new: true, // return the updated document

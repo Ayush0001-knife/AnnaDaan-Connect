@@ -17,6 +17,9 @@ const NgoSchema = new mongoose.Schema({
   userType:{
     type: String,
     required: true,
+  },city:{
+    type: String,
+    required: true,
   }
 });
 

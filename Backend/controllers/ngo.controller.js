@@ -1,12 +1,12 @@
 const NgoModel = require("../models/Ngo.model");
 
 exports.postNgoData = async (req, res) => {
-  const { contact, password, name, userType } = req.body;
+  const { contact, password, name, userType ,city} = req.body;
 
-  console.log("Data in backend: ", contact, password, name, userType);
+  console.log("Data in backend: ", contact, password, name, userType ,city);
 
   if(userType === "ngo"){
-    const ngoInfo = new NgoModel({ contact, password, name:name , userType});
+    const ngoInfo = new NgoModel({ contact, password, name:name , userType ,city});
     ngoInfo.save().then(()=>{
       console.log("Data saved successfully in Ngo Collection")
     }).catch((error)=>{

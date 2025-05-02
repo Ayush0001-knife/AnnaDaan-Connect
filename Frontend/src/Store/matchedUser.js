@@ -8,16 +8,18 @@ const MatchedUserSlice = createSlice({
       name: "",
       password: "",
       userType: "",
+      city: "",
     },
     userActivities: [],
   },
   reducers: {
     setUserInfo: (state, action) => {
-      const { contact, name, password, userType } = action.payload;
+      const { contact, name, password, userType ,city} = action.payload;
       state.userInfo.contact = contact;
       state.userInfo.name = name;
       state.userInfo.password = password;
       state.userInfo.userType = userType;
+      state.userInfo.city = city;
     },
     resetUserInfo: (state) => {
       state.userInfo = {
@@ -25,6 +27,7 @@ const MatchedUserSlice = createSlice({
         name: "",
         password: "",
         userType: "",
+        city:"",
       };
       state.userActivities = [];
     },

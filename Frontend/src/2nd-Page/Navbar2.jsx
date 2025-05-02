@@ -7,9 +7,12 @@ import { useDispatch } from "react-redux";
 import { MatchedUserActions } from "../Store/matchedUser";
 import { isRegisteredActions } from "../Store/isRegistered";
 import { useNavigate } from "react-router-dom";
+import { NotificationsActions } from "../Store/notifications";
 
 function Navbar2() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sameCityDonations, setSameCityDonations] = useState([]);
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Use useNavigate hook from react-router-dom
@@ -25,6 +28,29 @@ function Navbar2() {
     dispatch(MatchedUserActions.resetUserInfo());
     dispatch(isRegisteredActions.resetIsRegistered());
     navigate("/");
+  };
+
+  const handleNotificationsClick = () => {
+    console.log("matched user", matchedUser);
+
+    fetch("http://localhost:3001/donor/donations-data", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched Donations", data.donations);
+        const filteredData = data.donations.filter(
+          (donation) => donation.city === matchedUser.userInfo.city
+        );
+        console.log("Filtered data", filteredData);
+        dispatch(NotificationsActions.setNotifications(filteredData));
+      })
+      .catch((error) => {
+        console.error("Error fetching donations:", error);
+      });
   };
 
   return (
@@ -88,7 +114,10 @@ function Navbar2() {
           className={`${styles["nav-items"]} ${
             currentPage === "notifications" ? styles.active : ""
           }`}
-          onClick={() => handleCurrentPageChange("notifications")}
+          onClick={() => {
+            handleCurrentPageChange("notifications");
+            handleNotificationsClick();
+          }}
         >
           Notifications
         </Link>

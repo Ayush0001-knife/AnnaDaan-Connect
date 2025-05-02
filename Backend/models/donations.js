@@ -28,7 +28,10 @@ const donationsSchema = new mongoose.Schema({
    },
    status:{
       type:String,
-      default:"active",
+      default:" _ _ _ _ "
+   },city:{
+      type:String,
+      required:true,
    }
 })
 

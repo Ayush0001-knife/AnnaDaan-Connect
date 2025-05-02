@@ -5,6 +5,7 @@ import { FaWeightHanging } from "react-icons/fa";
 import { CgSandClock } from "react-icons/cg";
 import { GrCircleInformation } from "react-icons/gr";
 import styles from "./yourdonationsbox.module.css";
+import { GrLocationPin } from "react-icons/gr";
 
 function YourDonationsBox({ activity }) {
   const matchedUser = useSelector((store) => store.matchedUser);
@@ -13,6 +14,7 @@ function YourDonationsBox({ activity }) {
     type: activity?.type || "",
     quantity: activity?.quantity || "",
     expiration: activity?.expiration || "",
+    city: activity?.city || "",
   });
 
   const handleFormSubmit = async (e) => {
@@ -23,12 +25,14 @@ function YourDonationsBox({ activity }) {
       type: activity?.type || "",
       quantity: activity?.quantity || "",
       expiration: activity?.expiration || "",
+      city: activity?.city || "",
     };
 
     const isDataUnchanged =
       originalData.type === formData.type &&
       String(originalData.quantity) === String(formData.quantity) &&
-      String(originalData.expiration) === String(formData.expiration);
+      String(originalData.expiration) === String(formData.expiration) &&
+      originalData.city === formData.city;
 
     if (isDataUnchanged) {
       // No changes, just close the form
@@ -52,8 +56,6 @@ function YourDonationsBox({ activity }) {
     } catch (err) {
       console.error("Error updating donation:", err);
     }
-
-    window.location.reload();
   };
 
   const handleRemoveFoodPost = async () => {
@@ -101,8 +103,14 @@ function YourDonationsBox({ activity }) {
       {!isEditing ? (
         <>
           <div className={styles.name}>
-            <MdOutlineAccountCircle />
-            <div className={styles["person-name"]}>{activity.name}</div>
+            <div className="details">
+              <MdOutlineAccountCircle />
+              <div className={styles["person-name"]}>{activity.name}</div>
+            </div>
+            <div className="location">
+              <GrLocationPin />
+              <div className={styles["person-name"]}>{activity.city}</div>
+            </div>
           </div>
 
           <div className={styles.props}>
@@ -194,6 +202,22 @@ function YourDonationsBox({ activity }) {
                   setFormData({ ...formData, expiration: e.target.value })
                 }
               />
+            </div>
+            <div className={styles.formGroup}>
+              <label>City:</label>
+              <select
+                value={formData.city}
+                onChange={(e) =>
+                  setFormData({ ...formData, city: e.target.value })
+                }
+              >
+                <option value="">Select city</option>
+                <option value="Noida">Noida</option>
+                <option value="Gr Noida">Gr Noida</option>
+                <option value="Ghaziabad">Ghaziabad</option>
+                <option value="Gurgaon">Gurgaon</option>
+                <option value="Okhla">Okhla</option>
+              </select>
             </div>
             <div className={styles.formButtons}>
               <button type="submit">Save</button>

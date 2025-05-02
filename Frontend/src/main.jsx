@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import FirstPage from "./1st-Page/1st-page";
 import SecondPage from "./2nd-Page/2nd-Page";
 import NotificationsPage from "./2nd-Page/notifiactions";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {

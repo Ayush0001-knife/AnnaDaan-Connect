@@ -12,6 +12,7 @@ function PostFoodPage() {
   const typeElement = useRef("");
   const quantityElement = useRef("");
   const expirationElement = useRef("");
+  const cityElement = useRef("");
 
   const handlePostNowClick = (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ function PostFoodPage() {
     const quantity = quantityElement.current.value;
     const expiration = expirationElement.current.value;
     const postTiming = new Date().toLocaleString();
+    const city = cityElement.current.value;
 
     const foodData = {
       contact: matchedUser.userInfo.contact,
@@ -27,6 +29,7 @@ function PostFoodPage() {
       quantity,
       expiration,
       postTiming,
+      city,
     };
 
     console.log("Your Enterd Food data", foodData); // Fixed typo in console.log
@@ -43,6 +46,7 @@ function PostFoodPage() {
     typeElement.current.value = "";
     quantityElement.current.value = "";
     expirationElement.current.value = "";
+    cityElement.current.value = "";
 
     dispatch(CurrentPageActions.setCurrentPage("dashboard"));
 
@@ -118,6 +122,23 @@ function PostFoodPage() {
             <option value="3.5">2–4 hours</option>
             <option value="5.5">4–6 hours</option>
             <option value="11.5">6–12 hours</option>
+          </select>
+        </div>
+
+        <div className={styles.formGroup}>
+          <label htmlFor="type">City</label>
+          <select
+            id="city"
+            name="type"
+            className={styles.select}
+            ref={cityElement}
+          >
+            <option value="">Select food type</option>
+            <option value="Noida">Noida</option>
+            <option value="Gr Noida">Gr Noida</option>
+            <option value="Ghaziabad">Ghaziabad</option>
+            <option value="Gurgaon">Gurgaon</option>
+            <option value="Okhla">Okhla</option>
           </select>
         </div>
 
